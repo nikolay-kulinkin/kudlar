@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    // echo 'Hello, world!';
+    // dump('Hello, world!');
+    // dd('Hello, world!');
+    // dump(config('app.locale'));
+    // dump(config('database.connections.mysql.database'));
+    // dump(config('custom.knv'));
+
     return view('welcome');
 });
