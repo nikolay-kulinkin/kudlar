@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // echo 'Hello, world!';
-    // dump('Hello, world!');
-    // dd('Hello, world!');
-    // dump(config('app.locale'));
-    // dump(config('database.connections.mysql.database'));
-    // dump(config('custom.knv'));
-
+    //   dd(app());
+    // dd(app()->make('cache'));
+    // $cache=app()->make('cache');
+    // $cache->put('test',123);
+    // dd($cache->get('test','default'));
+    // dd(app('cache'));
+    // $cache=app('cache');
+    // dd(cache());
+    // $cache=cache();
+    // dd(Cache::get('test',222));
+    
     return view('welcome');
 });
