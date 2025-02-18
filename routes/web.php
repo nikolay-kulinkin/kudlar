@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,42 +19,37 @@ use Illuminate\Support\Facades\Route;
     
 //     return view('welcome');
 // });
-// Route::get('/',function(){
-//     return '<h1>Hello world!</h1>';
-// });
-// Route::get('/',function(){
-//     return view('hi',['title'=>'Main page']);
-// });
-Route::view('/','test.hi',['title'=>'Main page']);
-
-// Route::get('/posts/{id?}/',function($id=1){
-//     return "Post ID:{$id}";
-// });
-// Route::get('/posts/{id}/comments/{comment}',function($id,$comment_id){
-//     return "Post ID:{$id} Comment ID:{$comment_id}";
-// });
-// Route::get('/posts/{id}/',function($id){
-//     return "Post ID:{$id}";
-// })->where(['id'=>'[0-9]+']);
-
-
-Route::get('/posts',function(){
-    return "Posts page";
-});
-Route::get('/posts/{id}/',function($id){
-    return "Post ID:{$id}";
-});
-
-
-Route::get('/posts/contact',function(){
-    return "Post CONTACT";
-});
-
-Route::get('/posts/{slug}/',function($slug){
-    return "Post SLUG:{$slug}";
+Route::get('/',[MainController::class,'index']);
     
+// Route::get('/admin',function(){
+//     return 'Admin main page';
+// });
+// Route::get('/admin/posts',function(){
+//     return 'Admin posts page';
+// });
+// Route::get('/admin/posts/{id}',function($id){
+//     return "Admin post {$id}";
+// });
+
+Route::prefix('admin')->group(function(){
+    Route::get('/',function(){
+            return 'Admin main page';
+    });
+    Route::get('/posts',function(){
+            return 'Admin posts page';
+    });
+    Route::get('posts/{id}',function($id){
+            return "Admin post {$id}";
+    });
 });
 
-Route::get('/search/{search}',function($search){
-    return "Searching:{$search}";
-})->where(['search'=>'.*']);
+// Route::fallback(function(){
+//     return 'Fallback page';
+// });
+// Route::fallback(function(){
+//     return response('404-Page not found',404);
+// });
+Route::fallback(function(){
+    return response()->json(['answer'=>'404-Page not found'],404);
+});
+
