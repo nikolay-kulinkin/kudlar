@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
   public function index()
   {
-    return view('home.index',['title'=>'Home page']);
+    return view('home.index',['title'=>'Home page','test'=>'Test']);
   }
 
   public function test()
@@ -19,10 +19,7 @@ class HomeController extends Controller
 
   public function contact()
   {
-    $data=[
-      'name'=>'John',
-      'age'=>20
-    ];
-    return view('home.contact',['title'=>'<i>Contact page</i>','data'=>$data]);
+    
+    return view('home.contact',['title'=>'Contact page']);
   }
 }

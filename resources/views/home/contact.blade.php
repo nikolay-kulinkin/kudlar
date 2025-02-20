@@ -1,34 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{$title}}</title>
-</head>
-<body>
+@extends('layouts.main')
 
+@section('content')
+   <h1>Contact page</h1>
+@endsection
 
-    <h1>{{$title}}</h1>
-    <h2>{!!$title!!}</h2>
-    <h3><?= $title ?></h3>
+@section('title')
+   Test title from Contact page
+@endsection
 
-    {{mb_strlen('Привет, мир!','UTF-8')}}
-
-    <p>&copy;{{date('Y')}}</p>
-
-    @{{name}}
-
-    @verbatim
-      <div class="container">
-        Hello,{{name}}.
-      </div>
-    @endverbatim
-
-    <script>
-        let data1={!!json_encode($data)!!};
-        let data2=<?= json_encode($data) ?>;
-        {{--let data3={{Js::from($data)}};--}}
-    </script>
-   
-</body>
-</html>
+@section('navbar')
+  @parent
+  <div class="container">
+    Additional content
+  </div>
+@endsection
