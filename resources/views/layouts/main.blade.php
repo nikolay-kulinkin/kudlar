@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <title>{{$title??'Default title'}}</title> -->
      <title>@yield('title','Default title')</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="{{asset('bootstrap/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('main.css')}}"> -->
+    @vite(['resources/bootstrap/bootstrap.bundle.js',
+                   'resources/bootstrap/bootstrap.css',
+                   'resources/css/main.css'
+        ])
 </head>
 
 <body>
@@ -38,7 +44,8 @@
 
     <!-- @include('layouts.incs.footer',['test'=>'Hello from layout']) -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"> -->
+    <script src="{{asset('bootstrap/bootstrap.bundle.js')}}"> 
     </script>
 </body>
 
