@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\Country;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\View;
@@ -13,73 +15,28 @@ class HomeController extends Controller
   {
     $users=[];
     $cities=[];
-    // $cities=DB::table('city')->whereIn('Name',['Kabul','Paris','Madrid'])
-    //                           ->select('Name')
-    //                          ->get();
-    // $cities=DB::table('city')->where('Name','like','a%')->get();
-    // $cities=DB::table('city')->where('CountryCode','like','N%')->get();
-    // $cities=DB::table('city')->where('Name','like','_b%')->get();
-    // $cities=DB::table('city')->where('Name','like','%b_')->get();
-    // $cities=DB::table('city')->where('CountryCode','like','_b_')->get();
-    // $users=DB::table('users')->whereDate('created_at','>','2025-02-22')->get();
-    // $cities=DB::table('city')->select('city.ID','city.Name','city.CountryCode',
-    //                                  'country.Name as country_name')
-    //                           ->leftJoin('country','city.CountryCode','=','country.Code')
-    //                           ->limit(10)
-    //                           ->get();
+    // $posts=Post::all()->toArray();
+    // dump($posts);
+    // $post=Post::first()->toArray();
+    // dump($post);
+    // $post=Post::query()->find(2,['id','title','slug'])->toArray();
+    // dump($post);
+    // $countries=Country::all()->toArray();
+    // dump($countries);
+    // $countries=Country::where('Population','>',100_000_000)
+    //                   ->orderBy('Population','desc')
+    //                   ->limit(10)
+    //                   ->get()
+    //                   ->toArray();
 
-    // DB::statement("set sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'");                         
-    //  $cities=DB::table('city')->selectRaw('sum(Population) as s_p,CountryCode,max(Name)')
-    //                           ->groupBy('CountryCode')
-    //                           ->having('s_p','>',10000000)
-    //                           ->get();
-    // dump(DB::select('select @@sql_mode'));
-
-    // dump(DB::table('users')->insert([
-    //      'name'=>'User1',
-    //      'email'=>'user1@mail.com',
-    //      'password'=>111
-    // ]));
-    // dump(DB::table('users')->insert([[
-    //      'name'=>'User2',
-    //      'email'=>'user2@mail.com',
-    //      'password'=>222
-    // ],[
-    //      'name'=>'User3',
-    //      'email'=>'user3@mail.com',
-    //      'password'=>333
-    // ]]));
-    // dump(DB::table('users')->insertOrIgnore([[
-    //   'name'=>'User5',
-    //   'email'=>'user2@mail.com',
-    //   'password'=>555
-    // ],[
-    //   'name'=>'User4',
-    //   'email'=>'user4@mail.com',
-    //   'password'=>444
-    // ]]));
-    // dump(DB::table('users')->insertGetId([
-    //   'name'=>'User5',
-    //   'email'=>'user5@mail.com',
-    //   'password'=>555
-    // ]));
-    // dump(DB::table('users')->where('id',12)->update([
-    //   'name'=>'Darc',
-    //   'email'=>'darc_new@mail.com'
-    // ]));
-    // dump(DB::table('users')->updateOrInsert(
-    //   ['email'=>'darc_new@mail.com'],
-    //   ['name'=>'Darc New','password'=>'new_password']
-
-    // ));
-    // dump(DB::table('users')->updateOrInsert(
-    //   ['email'=>'darc_new2@mail.com'],
-    //   ['name'=>'Darc New2','password'=>'new_password2']
-
-    // ));
-    dump(DB::table('users')->delete(19));
-    dump($cities);
-   
+    
+    // dump($countries);
+    // $country=Country::first();
+    // dump($country->toArray());
+    // dump($country->Code);
+    // dump($country->Name);
+    $country=Country::find('ABW');
+    dump($country->toArray());
      return view('home.index',compact('users'));
   }
 
