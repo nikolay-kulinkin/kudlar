@@ -12,27 +12,73 @@ class HomeController extends Controller
   public function index()
   {
     $users=[];
-    // $users=DB::table('users')->get(['id','name','email']);
-    // $user=DB::table('users')->first();
-    // $user=DB::table('users')->where('id','=',3)->first();
-    // $user=DB::table('users')->where('name','Caesar')->first();
-    // $user=DB::table('users')->where('id','>','2')->value('name');
-    // $users=DB::table('users')->where('id','>',1)->orderBy('id')->get();
-    // $user=DB::table('users')->find(2,['id','name']);
-    // $users=DB::table('users')->pluck('name','email');
-    // $cities=DB::table('city')->limit(10)->get();
-    // $cities=DB::table('city')
-    //         ->where('ID','>',3)
-    //         ->where('ID','<',10)
-    //         ->get();
-    // $cities=DB::table('city')
-    //             ->where([['ID','>',3],['ID','<',10]])
-    //             ->orWhere('Population','>',2000000)
-    //             ->get();
-      // $cities=DB::table('city')->count();
-      // $cities=DB::table('city')->max('Population');
-      $cities=DB::table('city')->orderBy('Population','desc')->first();
-    dump($cities->Population);
+    $cities=[];
+    // $cities=DB::table('city')->whereIn('Name',['Kabul','Paris','Madrid'])
+    //                           ->select('Name')
+    //                          ->get();
+    // $cities=DB::table('city')->where('Name','like','a%')->get();
+    // $cities=DB::table('city')->where('CountryCode','like','N%')->get();
+    // $cities=DB::table('city')->where('Name','like','_b%')->get();
+    // $cities=DB::table('city')->where('Name','like','%b_')->get();
+    // $cities=DB::table('city')->where('CountryCode','like','_b_')->get();
+    // $users=DB::table('users')->whereDate('created_at','>','2025-02-22')->get();
+    // $cities=DB::table('city')->select('city.ID','city.Name','city.CountryCode',
+    //                                  'country.Name as country_name')
+    //                           ->leftJoin('country','city.CountryCode','=','country.Code')
+    //                           ->limit(10)
+    //                           ->get();
+
+    // DB::statement("set sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'");                         
+    //  $cities=DB::table('city')->selectRaw('sum(Population) as s_p,CountryCode,max(Name)')
+    //                           ->groupBy('CountryCode')
+    //                           ->having('s_p','>',10000000)
+    //                           ->get();
+    // dump(DB::select('select @@sql_mode'));
+
+    // dump(DB::table('users')->insert([
+    //      'name'=>'User1',
+    //      'email'=>'user1@mail.com',
+    //      'password'=>111
+    // ]));
+    // dump(DB::table('users')->insert([[
+    //      'name'=>'User2',
+    //      'email'=>'user2@mail.com',
+    //      'password'=>222
+    // ],[
+    //      'name'=>'User3',
+    //      'email'=>'user3@mail.com',
+    //      'password'=>333
+    // ]]));
+    // dump(DB::table('users')->insertOrIgnore([[
+    //   'name'=>'User5',
+    //   'email'=>'user2@mail.com',
+    //   'password'=>555
+    // ],[
+    //   'name'=>'User4',
+    //   'email'=>'user4@mail.com',
+    //   'password'=>444
+    // ]]));
+    // dump(DB::table('users')->insertGetId([
+    //   'name'=>'User5',
+    //   'email'=>'user5@mail.com',
+    //   'password'=>555
+    // ]));
+    // dump(DB::table('users')->where('id',12)->update([
+    //   'name'=>'Darc',
+    //   'email'=>'darc_new@mail.com'
+    // ]));
+    // dump(DB::table('users')->updateOrInsert(
+    //   ['email'=>'darc_new@mail.com'],
+    //   ['name'=>'Darc New','password'=>'new_password']
+
+    // ));
+    // dump(DB::table('users')->updateOrInsert(
+    //   ['email'=>'darc_new2@mail.com'],
+    //   ['name'=>'Darc New2','password'=>'new_password2']
+
+    // ));
+    dump(DB::table('users')->delete(19));
+    dump($cities);
    
      return view('home.index',compact('users'));
   }
