@@ -17,47 +17,63 @@ class HomeController extends Controller
     $users=[];
     $cities=[];
     
-    
-    
-    // $country=Country::find('AFG');
-    // dump($country->toArray());
-    // dump('Count:'.Country::query()->count());
-    // dump('Count:'.Country::query()->where('Population','>',1_000_000)->count());
-    // dump('Max:'.Country::query()->max('Population'));
-    // dump('Min:'.Country::query()->min('Population'));
-    // dump('Avg:'.Country::query()->avg('Population'));
-    // $country=Country::find('AFG2');
-    // if(!$country){
-    //   abort(404);
-    // }
-    // // dump($country);
-    // $country=Country::query()->findOrFail('AFG2');
-    // dump($country);
-    // $post=new Post();
-    // $post->title='Post4';
-    // $post->content='Post4 content';
-    // $post->category_id=rand(1,2);
-    // dump($post->save());
-    // dump($post);
-    // $post=new Post();
-    // $post->title='Post5';
-    // $post->content='Post5 content';
-    // $post->category_id=rand(1,2);
-    // dump($post->save());
-    // dump($post->id);
-    // dump(Post::query()->create([
-    //   'title'=>'Post7',
-    //   'content'=>'Post7 content',
-    //   'category_id'=>rand(1,2),
-    //   'status'=>0
-    // ]));
+    // $posts=Post::query()->get();
+    // dump($posts);
 
-    // $post=Post::query()->find(2);
-    // dump($post->delete());
+    // $posts2=DB::table('posts')->get();
+    // dump($posts2);
 
-    // dump(Post::destroy(3));
-    // dump(Post::destroy(7,9));
-     return view('home.index',compact('users'));
+    // $posts3=DB::select('select * from posts');
+    // dump($posts3);
+    
+    // $data=[1,2,3,4,5];
+    // // dump($data);
+    // $data=collect($data);
+    // dump($data);
+    
+    // $products=[
+    //   ['title'=>'Product 1','price'=>10],
+    //   ['title'=>'Product 2','price'=>15],
+    //   ['title'=>'Product 3','price'=>10],
+    //   ['title'=>'Product 4','price'=>20],
+    //   ['title'=>'Product 5','price'=>20],
+    // ];
+    // $products=collect($products);
+    // dump($products);
+
+    // dump($products->avg('price'));
+    // dump($products->min('price'));
+    // dump($products->max('price'));
+    // dump($products->sum('price'));
+    // dump($products->count());
+
+    // $filtered=$products->filter(function($value,$key){
+    //   return $value['price']>10;
+    // });
+    // dump($filtered);
+
+    // $countries=Country::query()->limit(10)->get(['Name','Population','Continent']);
+    // dump($countries);
+
+    // $filtered=$countries->filter(function($value,$key){
+    //   return $value['Population']>3_000_000;
+    // });
+    // dump($filtered->toArray());
+
+    // dump($countries->avg('Population'));
+    // dump($countries->max('Population'));
+    // dump($countries->min('Population'));
+    // dump($countries->sum('Population'));
+
+    // dump($countries->countBy(function(Country $country){
+    //   return $country->Continent;
+    // }));
+
+
+
+
+    
+     return view('home.index',compact('posts','posts2','posts3'));
   }
 
   public function store(Request $request)
