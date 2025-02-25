@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Country;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -17,63 +18,24 @@ class HomeController extends Controller
     $users=[];
     $cities=[];
     
-    // $posts=Post::query()->get();
-    // dump($posts);
+    // $category=Category::query()->find(2);
+    // dump($category->toArray());
+    // // $post=Post::query()->where('category_id',2)->first();
+    // // dump($post);
+    // dump($category->post->title);
+    // dump($category->post->id);
 
-    // $posts2=DB::table('posts')->get();
-    // dump($posts2);
-
-    // $posts3=DB::select('select * from posts');
-    // dump($posts3);
+    // $post=Post::query()->find(3);
+    // dump($post->toArray());
+    // dump($post->category->title);
     
-    // $data=[1,2,3,4,5];
-    // // dump($data);
-    // $data=collect($data);
-    // dump($data);
     
-    // $products=[
-    //   ['title'=>'Product 1','price'=>10],
-    //   ['title'=>'Product 2','price'=>15],
-    //   ['title'=>'Product 3','price'=>10],
-    //   ['title'=>'Product 4','price'=>20],
-    //   ['title'=>'Product 5','price'=>20],
-    // ];
-    // $products=collect($products);
-    // dump($products);
-
-    // dump($products->avg('price'));
-    // dump($products->min('price'));
-    // dump($products->max('price'));
-    // dump($products->sum('price'));
-    // dump($products->count());
-
-    // $filtered=$products->filter(function($value,$key){
-    //   return $value['price']>10;
-    // });
-    // dump($filtered);
-
-    // $countries=Country::query()->limit(10)->get(['Name','Population','Continent']);
-    // dump($countries);
-
-    // $filtered=$countries->filter(function($value,$key){
-    //   return $value['Population']>3_000_000;
-    // });
-    // dump($filtered->toArray());
-
-    // dump($countries->avg('Population'));
-    // dump($countries->max('Population'));
-    // dump($countries->min('Population'));
-    // dump($countries->sum('Population'));
-
-    // dump($countries->countBy(function(Country $country){
-    //   return $country->Continent;
-    // }));
 
 
 
 
     
-     return view('home.index',compact('posts','posts2','posts3'));
+     return view('home.index');
   }
 
   public function store(Request $request)

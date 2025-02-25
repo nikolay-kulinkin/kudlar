@@ -10,6 +10,11 @@ class Post extends Model
     use HasFactory;
     protected $fillable=['title','content','category_id','status'];
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function isPublished()
     {
         return $this->status?'Published':'Not published';
