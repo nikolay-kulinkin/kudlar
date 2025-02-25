@@ -11,5 +11,6 @@ class Country extends Model
     protected $table='country';
     protected $primaryKey='Code';
     public $incrementing=false;
+    protected $hidden=['Region','SurfaceArea'];
 
 }
