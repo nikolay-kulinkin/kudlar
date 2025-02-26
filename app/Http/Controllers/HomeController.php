@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Country;
 use App\Models\Category;
@@ -18,51 +19,47 @@ class HomeController extends Controller
     $users=[];
     $cities=[];
     
-    // $category=Category::query()->find(1);
-    // dump($category->toArray());
-
-    // $posts=Post::where('category_id',1)->get();
-    // dump($posts->toArray());
-    
-    // $posts=$category->posts;
-    // dump($posts->toArray());
-
     // $post=Post::find(1);
-    // dump($post->category->toArray());
+    // dump($post->toArray());
+    // $tags=$post->tags;
+    // dump($tags);
 
-    // $categories=Category::all();
-    // dump($categories->toArray());
-    // foreach($categories as $category){
-    //   echo "{$category->title}<br>";
-    //   foreach($category->posts as $post){
-    //     echo "{$post->title}<br>";
+    // foreach($tags as $tag){
+    //   echo "{$tag->title}<br>";
+    // }
+
+    // foreach($tags as $tag){
+    //   echo "{$tag->title}|{$tag->pivot->created_at}<br>";
+    // }
+
+    // $tag=Tag::find(5);
+    // dump($tag->posts->toArray());
+    
+    // $posts=Post::all();
+    // foreach($posts as $post){
+    //   echo "{$post->title}<br><br>";
+    //   foreach($post->tags as $tag){
+    //     echo "{$tag->title}<br>";
     //   }
     //   echo "<hr>";
     // }
 
-    // $categories=Category::with('posts')->get();
-    // foreach($categories as $category){
-    //      echo "{$category->title}<br>";
-    //      foreach($category->posts as $post){
-    //        echo "{$post->title}<br>";
-    //       }
-    //      echo "<hr>";
-    // }
-
-    // $categories=Category::query()->withCount('posts')->get();
-    // dump($categories->toArray());
-    // foreach($categories as $category){
-    //   echo "{$category->title} ({$category->posts_count})<br>";
+    // $posts=Post::with('tags')->get();
+    // foreach($posts as $post){
+    //   echo "{$post->title}<br><br>";
+    //   foreach($post->tags as $tag){
+    //     echo "{$tag->title}<br>";
+    //   }
+    //   echo "<hr>";
     // }
 
     $category=Category::find(1);
-    // dump($category->posts()->orderBy('id','desc')->get()->toArray());
-    // dump($category->posts()->where('title','<>','Post4')
-    //               ->orderBy('id','desc')->get()->toArray());
-
-    // dump($category->posts->where('title','<>','Post4')->toArray());
-
-    // dump($category->posts()->get()->toArray());
+    dump($category->posts->toArray());
+    dump($category->latestPost->toArray());
+    dump($category->oldestPost->toArray());
+    dump($category->latestActivePost->toArray());
+   
+    
     
      return view('home.index');
   }

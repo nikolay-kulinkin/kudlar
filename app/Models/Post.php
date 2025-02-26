@@ -15,6 +15,11 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class)->withPivot(['created_at','updeted_at']);
+    }
+
     public function isPublished()
     {
         return $this->status?'Published':'Not published';
