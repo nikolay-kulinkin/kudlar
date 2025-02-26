@@ -21,23 +21,23 @@ class Category extends Model
         return $this->hasMany(Post::class);
     }
 
-    public function latestPost()
-    {
-        return $this->hasOne(Post::class)->latestOfMany();
-    }
+    // public function latestPost()
+    // {
+    //     return $this->hasOne(Post::class)->latestOfMany();
+    // }
 
-    public function oldestPost()
-    {
-        return $this->hasOne(Post::class)->oldestOfMany();
-    }
+    // public function oldestPost()
+    // {
+    //     return $this->hasOne(Post::class)->oldestOfMany();
+    // }
 
-    public function latestActivePost()
-    {
-        return $this->hasOne(Post::class)->ofMany([
-          'id'=>'max'  
-        ],function(Builder $query){
-            $query->where('status',1)
-                  ->where('id','<>',3);
-        });
-    }
+    // public function latestActivePost()
+    // {
+    //     return $this->hasOne(Post::class)->ofMany([
+    //       'id'=>'max'  
+    //     ],function(Builder $query){
+    //         $query->where('status',1)
+    //               ->where('id','<>',3);
+    //     });
+    // }
 }

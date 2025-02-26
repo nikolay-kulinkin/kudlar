@@ -16,50 +16,96 @@ class HomeController extends Controller
 {
   public function index()
   {
-    $users=[];
-    $cities=[];
-    
-    // $post=Post::find(1);
-    // dump($post->toArray());
-    // $tags=$post->tags;
-    // dump($tags);
-
-    // foreach($tags as $tag){
-    //   echo "{$tag->title}<br>";
-    // }
-
-    // foreach($tags as $tag){
-    //   echo "{$tag->title}|{$tag->pivot->created_at}<br>";
-    // }
-
-    // $tag=Tag::find(5);
-    // dump($tag->posts->toArray());
-    
-    // $posts=Post::all();
-    // foreach($posts as $post){
-    //   echo "{$post->title}<br><br>";
-    //   foreach($post->tags as $tag){
-    //     echo "{$tag->title}<br>";
-    //   }
-    //   echo "<hr>";
-    // }
-
-    // $posts=Post::with('tags')->get();
-    // foreach($posts as $post){
-    //   echo "{$post->title}<br><br>";
-    //   foreach($post->tags as $tag){
-    //     echo "{$tag->title}<br>";
-    //   }
-    //   echo "<hr>";
-    // }
-
-    $category=Category::find(1);
-    dump($category->posts->toArray());
-    dump($category->latestPost->toArray());
-    dump($category->oldestPost->toArray());
-    dump($category->latestActivePost->toArray());
    
+    // Post::create([
+    //   'title'=>'Post 6',
+    //   'slug'=>'post-6',
+    //   'content'=>'Lorem ipsum...',
+    //   'category_id'=>4
+    // ]);
+
+    // $category=Category::find(2);
+    // $category->posts()->save(
+    //   new Post([
+    //     'title'=>'Post7',
+    //     'slug'=>'post-7',
+    //     'content'=>'Lorem ipsum...'
+    //   ])
+    // );
+
+    // $category->posts()->saveMany([
+    //   new Post(['title'=>'Post8','slug'=>'post-8',
+    //             'content'=>'Lorem ipsum...']),
+    //   new Post(['title'=>'Post9','slug'=>'post-9',
+    //             'content'=>'Lorem ipsum...'])
+      
+    // ]);
+
+    // $category=Category::find(3);
+    // $category->posts()->create([
+    //   'title'=>'Post10',
+    //   'slug'=>'post-10',
+    //   'content'=>'Lorem ipsum...'
+    // ]);
+    // $category->posts()->create([
+    //   'title'=>'Post11',
+    //   'slug'=>'post-11',
+    //   'content'=>'Lorem ipsum...'
+    // ]);
+    // dump($category->posts->toArray());
+
+    // $category->posts()->save(new Post([
+    //   'title'=>'Post12',
+    //   'slug'=>'post-12',
+    //   'content'=>'Lorem ipsum...'
+    // ]));
+    // dump($category->posts->toArray());
+
+    // $category=Category::find(3);
+    // dump($category->posts->toArray());
+    // $category->posts()->save(new Post([
+    //   'title'=>'Post13',
+    //   'slug'=>'post-13',
+    //   'content'=>'Lorem ipsum...'
+    // ]));
+    // dump($category->posts->toArray());
+
+    // $category=Category::find(3);
+    // dump($category->posts->toArray());
+    // $category->posts()->save(new Post([
+    //   'title'=>'Post14',
+    //   'slug'=>'post-14',
+    //   'content'=>'Lorem ipsum...'
+    // ]));
+    // $category->refresh();
+    // dump($category->posts->toArray());
+
+    // $category=Category::find(4);
+    // $post=Post::find(15);
+    // $post->category()->associate($category);
+    // $post->save();
+
     
+    // $post=Post::find(15);
+    // $post->category()->dissociate();
+    // $post->save();
+
+    $post=Post::find(10);
+    // $post->tags()->attach(2);
+    // $post->tags()->attach([1,4]);
+    // $post->tags()->detach(2);
+    // $post->tags()->sync([1,2,4]);
+    $post->tags()->toggle([1,2,4,5]);
+
+
+
+
+
+   
+
+   
+
+   
     
      return view('home.index');
   }
