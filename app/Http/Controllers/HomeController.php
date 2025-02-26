@@ -18,22 +18,51 @@ class HomeController extends Controller
     $users=[];
     $cities=[];
     
-    // $category=Category::query()->find(2);
+    // $category=Category::query()->find(1);
     // dump($category->toArray());
-    // // $post=Post::query()->where('category_id',2)->first();
-    // // dump($post);
-    // dump($category->post->title);
-    // dump($category->post->id);
 
-    // $post=Post::query()->find(3);
-    // dump($post->toArray());
-    // dump($post->category->title);
+    // $posts=Post::where('category_id',1)->get();
+    // dump($posts->toArray());
     
-    
+    // $posts=$category->posts;
+    // dump($posts->toArray());
 
+    // $post=Post::find(1);
+    // dump($post->category->toArray());
 
+    // $categories=Category::all();
+    // dump($categories->toArray());
+    // foreach($categories as $category){
+    //   echo "{$category->title}<br>";
+    //   foreach($category->posts as $post){
+    //     echo "{$post->title}<br>";
+    //   }
+    //   echo "<hr>";
+    // }
 
+    // $categories=Category::with('posts')->get();
+    // foreach($categories as $category){
+    //      echo "{$category->title}<br>";
+    //      foreach($category->posts as $post){
+    //        echo "{$post->title}<br>";
+    //       }
+    //      echo "<hr>";
+    // }
 
+    // $categories=Category::query()->withCount('posts')->get();
+    // dump($categories->toArray());
+    // foreach($categories as $category){
+    //   echo "{$category->title} ({$category->posts_count})<br>";
+    // }
+
+    $category=Category::find(1);
+    // dump($category->posts()->orderBy('id','desc')->get()->toArray());
+    // dump($category->posts()->where('title','<>','Post4')
+    //               ->orderBy('id','desc')->get()->toArray());
+
+    // dump($category->posts->where('title','<>','Post4')->toArray());
+
+    // dump($category->posts()->get()->toArray());
     
      return view('home.index');
   }
