@@ -4,15 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <title>{{$title??'Default title'}}</title> -->
-     <title>@yield('title','Default title')</title>
+    
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="{{asset('assets/bootstrap/bootstrap.css')}}"> 
      <link rel="stylesheet" href="{{asset('assets/main.css')}}"> 
-    <!--  @vite(['resources/bootstrap/bootstrap.bundle.js',
-                   'resources/bootstrap/bootstrap.css',
-                   'resources/css/main.css' 
-        ]) -->
+     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+        
 </head>
 
 <body>
@@ -31,6 +28,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{route('home.contact')}}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{route('posts.create')}}">Add post</a>
                     </li>
                 </ul>
             </div>

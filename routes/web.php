@@ -6,7 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\TestController;
 use App\Http\Middleware\VerifyCsrfToken;
-use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\Admin\ProductController;
 
 /*
@@ -24,6 +24,12 @@ use App\Http\Controllers\Admin\ProductController;
     
 //     return view('welcome');
 // });
+// Route::get('/posts/create',function(){
+//     return '22222222222222';
+// })->name('posts.create');
+Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');
+Route::post('/posts',[PostController::class,'store'])->name('posts.store');
+
 
 Route::get('/',[HomeController::class,'index'])->name('home.index');
 Route::get('/test',[HomeController::class,'test'])->name('home.test');
@@ -32,3 +38,4 @@ Route::post('/store',[HomeController::class,'store'])
                      ->withoutMiddleware(VerifyCsrfToken::class);
 Route::post('/update',[HomeController::class,'update'])
                      ->withoutMiddleware(VerifyCsrfToken::class);
+

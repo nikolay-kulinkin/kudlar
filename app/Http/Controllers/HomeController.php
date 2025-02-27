@@ -95,8 +95,7 @@ class HomeController extends Controller
     // $post->tags()->attach([1,4]);
     // $post->tags()->detach(2);
     // $post->tags()->sync([1,2,4]);
-    $post->tags()->toggle([1,2,4,5]);
-
+    // $post->tags()->toggle([1,2,4,5]);
 
 
 
